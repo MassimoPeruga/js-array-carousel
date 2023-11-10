@@ -33,6 +33,9 @@ prev.addEventListener('click', function () {
     if (currentImage > 0) {
         currentImage--;
     }
+    else {
+        currentImage = images.length - 1
+    }
 
     allItems[currentImage].classList.add('active');
 
@@ -44,6 +47,9 @@ next.addEventListener('click', function () {
 
     if (currentImage < images.length - 1) {
         currentImage++;
+    }
+    else {
+        currentImage = 0
     }
 
     allItems[currentImage].classList.add('active');
