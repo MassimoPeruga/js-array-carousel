@@ -17,12 +17,18 @@
     position: relative;
     width: 700px;
     height: 300px;
-    overflow: hidden;
 }
 
 .item {
     height: 100%;
-    display: none;
+    overflow: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: all 0.5s;
 }
 
 .item img {
@@ -32,7 +38,7 @@
 }
 
 .item.active {
-    display: block;
+    opacity: 1;
 }
 
 .prev,
