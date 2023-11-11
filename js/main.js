@@ -1,19 +1,21 @@
 'use strict';
 
+//Variabili
 const images = ["./img/01.jpg", "./img/02.jpg", "./img/03.jpg", "./img/04.jpg", "./img/05.jpg"];
-const itemsContainer = document.querySelector(".items");
-const prev = document.querySelector('.prev');
-const next = document.querySelector('.next');
+const itemsContainer = document.querySelector(".ms_items");
+const prev = document.querySelector('.ms_prev');
+const next = document.querySelector('.ms_next');
 
 let currentImage = 0;
 
+//Creazione della slide principale
 for (let i = 0; i < images.length; i++) {
     //slide
     const item = document.createElement("div");
-    item.classList.add("item");
+    item.classList.add("ms_item");
 
     if (i === currentImage) {
-        item.classList.add("active");
+        item.classList.add("ms_active");
     }
 
     //img
@@ -24,11 +26,33 @@ for (let i = 0; i < images.length; i++) {
     itemsContainer.appendChild(item);
 }
 
-const allItems = document.querySelectorAll(".item");
+//Crezaione delle thumbnails
+const thumbnailsContainer = document.querySelector(".ms_thumbnails");
+
+for (let i = 0; i < images.length; i++) {
+    const thumbnail = document.createElement("div");
+    thumbnail.classList.add("ms_thumbnail");
+
+    if (i === currentImage) {
+        thumbnail.classList.add("ms_active_thumbnail");
+    }
+
+    const thumbnailImg = document.createElement("img");
+    thumbnailImg.src = `${images[i]}`;
+    thumbnailImg.alt = `Thumbnail ${i}`;
+    thumbnail.appendChild(thumbnailImg);
+    thumbnailsContainer.appendChild(thumbnail);
+}
+
+
+//Gestione dei pulsanti
+const allItems = document.querySelectorAll(".ms_item");
+const allThumbnails = document.querySelectorAll(".ms_thumbnail");
 
 prev.addEventListener('click', function () {
 
-    allItems[currentImage].classList.remove('active');
+    allItems[currentImage].classList.remove('ms_active');
+    allThumbnails[currentImage].classList.remove('ms_active_thumbnail');
 
     if (currentImage > 0) {
         currentImage--;
@@ -37,13 +61,15 @@ prev.addEventListener('click', function () {
         currentImage = images.length - 1
     }
 
-    allItems[currentImage].classList.add('active');
+    allItems[currentImage].classList.add('ms_active');
+    allThumbnails[currentImage].classList.add('ms_active_thumbnail');
 
 })
 
 next.addEventListener('click', function () {
 
-    allItems[currentImage].classList.remove('active');
+    allItems[currentImage].classList.remove('ms_active');
+    allThumbnails[currentImage].classList.remove('ms_active_thumbnail');
 
     if (currentImage < images.length - 1) {
         currentImage++;
@@ -52,6 +78,7 @@ next.addEventListener('click', function () {
         currentImage = 0
     }
 
-    allItems[currentImage].classList.add('active');
+    allItems[currentImage].classList.add('ms_active');
+    allThumbnails[currentImage].classList.add('ms_active_thumbnail');
 
 })
