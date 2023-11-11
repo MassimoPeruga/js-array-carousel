@@ -82,3 +82,29 @@ next.addEventListener('click', function () {
     allThumbnails[currentImage].classList.add('ms_active_thumbnail');
 
 })
+
+// Bonus 3
+for (let i = 0; i < allThumbnails.length; i++) {
+    const currentThumbnail = allThumbnails[i];
+
+    currentThumbnail.addEventListener('click', function () {
+        let clickedThumbnail = i;
+
+        const activeThumbnail = document.querySelector('.ms_active_thumbnail');
+
+        if (activeThumbnail) {
+            activeThumbnail.classList.remove('ms_active_thumbnail');
+        }
+
+        currentThumbnail.classList.add('ms_active_thumbnail');
+        currentImage = clickedThumbnail;
+
+        for (let indiceItem = 0; indiceItem < allItems.length; indiceItem++) {
+            if (indiceItem === currentImage) {
+                allItems[indiceItem].classList.add('ms_active');
+            } else {
+                allItems[indiceItem].classList.remove('ms_active');
+            }
+        }
+    });
+}

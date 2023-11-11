@@ -51,13 +51,14 @@ body {
     opacity: 1;
 }
 
-.ms_prev,
-.ms_next {
-    width: 20px;
-    height: 20px;
+.ms_prev i,
+.ms_next i {
+    font-size: 2rem;
     margin: 10px 0;
+    color: #d1d1e9;
+    background-color: #2b2c34;
+    opacity: .5;
     border-radius: 50%;
-    background: #ccc;
     position: absolute;
     left: 50%;
     transform: translatex(-50%);
@@ -65,42 +66,13 @@ body {
     z-index: 999;
 }
 
-.ms_prev {
+.ms_prev i {
     top: 0;
 }
 
-.ms_next {
+.ms_next i {
     bottom: 0;
 }
-
-.ms_prev::after {
-    content: '';
-    width: 10px;
-    height: 10px;
-    transform: rotate(45deg);
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    display: block;
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%) rotate(-45deg);
-}
-
-.ms_next::before {
-    content: '';
-    width: 10px;
-    height: 10px;
-    transform: rotate(45deg);
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    display: block;
-    position: absolute;
-    bottom: 35%;
-    left: 50%;
-    transform: translate(-50%) rotate(135deg);
-}
-
 
 .ms_thumbnails {
     height: 100%;
@@ -115,7 +87,7 @@ body {
     opacity: 0.25;
     border: 2px solid transparent;
     cursor: pointer;
-    transition: opacity 0.5s, border 0.5s;
+    transition: all 0.5s;
 }
 
 .ms_active_thumbnail {
